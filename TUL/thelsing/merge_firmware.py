@@ -8,8 +8,8 @@ APP_BIN = "$BUILD_DIR/${PROGNAME}.bin"
 LFS_BIN  = "$BUILD_DIR/littlefs.bin"
 SFS_BIN  = "$BUILD_DIR/spiffs.bin"
 #MERGED_BIN = "$BUILD_DIR/${PROGNAME}.factory.bin"
-MERGED_BIN = "/share/GIT/busware-esp32/firmware/${PIOENV}.factory.bin"
-OTA_BIN = "/share/GIT/busware-esp32/firmware/${PIOENV}.ota.bin"
+MERGED_BIN = "../../firmware/${PIOENV}.factory.bin"
+OTA_BIN = "../../firmware/${PIOENV}.ota.bin"
 BOARD_CONFIG = env.BoardConfig()
 
 
@@ -43,14 +43,9 @@ def merge_bin(source, target, env):
     )
 
 def bin_map_copy(source, target, env):
-    env.Execute(
-        " ".join(
-            [
-                "cp",
-                APP_BIN,
-                OTA_BIN
-            ]
-        )
+    shutil.copy(
+        env.subst(APP_BIN),
+        env.subst(OTA_BIN)
     )
 # Add a post action that runs esptoolpy to merge available flash images
 env.AddPostAction(APP_BIN, merge_bin)

@@ -100,9 +100,9 @@ void onImprovWiFiConnectedCb(const char *ssid, const char *password) {
     // pin or GPIO the programming led is connected to. Default is LED_BUILTIN
     knx.ledPin(KNX_LED);
     // is the led active on HIGH or low? Default is LOW
-    // knx.ledPinActiveOn(HIGH);
+    knx.ledPinActiveOn(HIGH);
     // pin or GPIO programming button is connected to. Default is 0
-    knx.buttonPin(9);
+    knx.buttonPin(KNX_BUTTON);
 
     // start the framework.
     knx.start();

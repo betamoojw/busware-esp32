@@ -4,7 +4,7 @@
 #include <AsyncTCP.h>
 #include <SPIFFS.h>
 
-#define MYNAME "Thelsing KNX Coupler for TUL"
+#define MYNAME "Thelsing KNX Coupler for M-Tech"
 
 #include <ESPAsyncWebServer.h>
 AsyncWebServer webserver(80);
